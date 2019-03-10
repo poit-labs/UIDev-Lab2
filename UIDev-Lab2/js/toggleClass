@@ -1,0 +1,32 @@
+// it's better to toggle menu this way
+
+'use strict'
+
+function $(elementId) {
+    return document.getElementById(elementId)
+}
+
+window.onload = function () {
+    setEventHandlers()
+}
+
+function setEventHandlers() {
+    $("nav-icon").onclick = function () {
+        toggleClass("nav-icon", 'open', 'close')
+	}
+}
+
+function toggleClass(elementId, className, counterClassName = '') {
+    var element = $(elementId)
+    if (element.classList.contains(className)) {
+        element.classList.remove(className)
+        if (!element.classList.contains(counterClassName)) {
+            element.classList.add(counterClassName)
+        }
+    } else {
+        element.classList.add(className)
+        if (element.classList.contains(counterClassName)) {
+            element.classList.remove(counterClassName)
+        }
+    }
+}
